@@ -3,7 +3,6 @@ package guru.qa.restaker;
 import com.github.javafaker.Faker;
 import com.github.javafaker.service.RandomService;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
@@ -14,7 +13,7 @@ public class TestData {
     public String firstName, lastName, email, gender, phone, birth, pict, address;
     public String[] subj, hobbies, stateAndCity;
 
-    public TestData() throws IOException {
+    public TestData() throws Exception {
         this.firstName = randomFirstName();
         this.lastName = randomLastName();
         this.email = randomEmail();
@@ -58,13 +57,13 @@ public class TestData {
         return "photo.png";
     }
 
-    private String[] randomHobbies() throws IOException {
+    private String[] randomHobbies() throws Exception {
         Path pathHobbies = Path.of("src/test/resources/hobbies.text");
         List<String> list = Files.readAllLines(pathHobbies);
         return randomArrayMaker(list);
     }
 
-    private String[] randomSubjects() throws IOException {
+    private String[] randomSubjects() throws Exception {
         Path pathSubjects = Path.of("src/test/resources/subjects.text");
         List<String> list = Files.readAllLines(pathSubjects);
         return randomArrayMaker(list);
